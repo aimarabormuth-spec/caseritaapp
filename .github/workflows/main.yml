@@ -32,8 +32,8 @@ jobs:
 
       - name: Build APK
         run: |
-          # El echo "y" responde automáticamente a cualquier pregunta de la terminal
-          echo "y" | flet build apk
+          # Usamos caseritaapp.py como el archivo principal
+          echo "y" | flet build apk caseritaapp.py
 
       - name: Subir APK generada como artefacto
         uses: actions/upload-artifact@v4
