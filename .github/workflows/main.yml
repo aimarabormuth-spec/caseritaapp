@@ -1,9 +1,10 @@
-name: Build Flet APK
+name: Build Caserita App APK
 
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -26,12 +27,13 @@ jobs:
       - name: Instalar Flutter (necesario para el build)
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.19.0' # O la versión que prefieras
           channel: 'stable'
 
       - name: Build APK
         run: |
-          # El flag --no-interactive evita el error EOFError que tenías
-          flet build apk --no-interactive
+          # Eliminamos --no-interactive porque ya no es compatible
+          flet build apk
 
       - name: Subir APK generada como artefacto
         uses: actions/upload-artifact@v4
