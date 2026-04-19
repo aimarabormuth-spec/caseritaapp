@@ -27,13 +27,13 @@ jobs:
       - name: Instalar Flutter (necesario para el build)
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0' # O la versión que prefieras
+          flutter-version: '3.19.0'
           channel: 'stable'
 
       - name: Build APK
         run: |
-          # Eliminamos --no-interactive porque ya no es compatible
-          flet build apk
+          # El echo "y" responde automáticamente a cualquier pregunta de la terminal
+          echo "y" | flet build apk
 
       - name: Subir APK generada como artefacto
         uses: actions/upload-artifact@v4
